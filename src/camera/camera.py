@@ -31,7 +31,9 @@ class Camera:
                 break
 
             results = self.detector.detect(frame)
-            self.recogniser.recognise(results)
+            gesture = self.recogniser.recognise(results)
+            if gesture:
+                print(gesture)
             frame = self.detector.draw(frame, results)
 
             cv2.imshow("Camera", frame)
